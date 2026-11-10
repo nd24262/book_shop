@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить книгу</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <div class="add-book-container">
+        <h1>Добавить книгу</h1>
+
+        <form action="/add-book" method="POST">
+            <p>
+                <label>Название книги:</label>
+                <input type="text" name="title" required>
+            </p>
+
+            <p>
+                <label>Автор:</label>
+                <input type="text" name="author" required>
+            </p>
+
+            <p>
+                <label>Цена:</label>
+                <input type="number" name="price" step="0.01" required>
+            </p>
+
+            <p>
+                <label>Количество:</label>
+                <input type="number" name="quantity" min="0" required>
+            </p>
+
+            <button type="submit">Добавить книгу</button>
+        </form>
+
+        <a href="/">На главную</a>
+    </div>
+
+</body>
+</html>

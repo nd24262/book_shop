@@ -70,3 +70,62 @@ nav a {
     margin-bottom: 20px;
 }
 
+
+/*Страница добавления книги*/
+.add-book-container {
+    width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-book-container h1 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.add-book-container p {
+    margin-bottom: 15px;
+}
+
+.add-book-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.add-book-container input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #a06fa8;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.add-book-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4e1f63;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.add-book-container button:hover {
+    background-color: #ba9ec6;
+}
+
+.add-book-container a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+    text-decoration: none;
+}
+
+.add-book-container a:hover {
+    text-decoration: underline;
+}
