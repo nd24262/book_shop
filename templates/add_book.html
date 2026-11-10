@@ -31,6 +31,16 @@
                 <input type="number" name="quantity" min="0" required>
             </p>
 
+            <p>
+                <label>Категория:</label>
+                <select name="category_id" required>
+                    {{range .}}
+                        <option value="{{.ID}}">{{.Name}}</option>
+                    {{else}}
+                        <option value="">Категорий пока нет</option>
+                    {{end}}
+                </select>
+            </p>
             <button type="submit">Добавить книгу</button>
         </form>
 

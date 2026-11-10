@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить категорию</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <div class="add-book-container">
+        <h1>Добавить категорию</h1>
+
+        <form action="/add-category" method="POST">
+            <p>
+                <label>Название категории:</label>
+                <input type="text" name="name" required>
+            </p>
+
+            <button type="submit">Добавить категорию</button>
+        </form>
+
+        <a href="/">На главную</a>
+    </div>
+
+</body>
+</html>

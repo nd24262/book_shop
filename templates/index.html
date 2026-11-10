@@ -25,12 +25,24 @@
         <section class="welcome">
             <h2>Добро пожаловать в Магазин Книг!</h2>
             <p>Найди книгу по душе.</p>
-            <a href="#books" class="button">Перейти к книгам</a>
         </section>
 
         <section id="books" class="catalog">
             <h2>Наш каталог</h2>
-            <p>Здесь скоро появятся наши книги.</p>
+
+            {{range .}}
+                <div class="book">
+                    <h3>{{.Title}}</h3>
+                    <p>Автор: {{.Author}}</p>
+                    <p>Цена: {{.Price}} руб.</p>
+                    <p>Количество: {{.Quantity}}</p>
+                    <p>Категория: {{.CategoryName}}</p>
+                </div>
+            {{else}}
+                <p>Пока книг нет.</p>
+            {{end}}
+
+            <a href="/add-book" class="button">Добавить книгу</a>
         </section>
 
     </main>
