@@ -95,6 +95,37 @@ func addCategoryPage(w http.ResponseWriter, r *http.Request) {
 	tmpl.Execute(w, nil)
 }
 
+func registerPage(w http.ResponseWriter, r *http.Request) {
+	if r.Method == "POST" {
+		name := r.FormValue("name")
+		email := r.FormValue("email")
+		password := r.FormValue("password")
+
+		_, err := database.Exec(
+			"INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)",
+			name, email, password, "client",
+		)
+
+		if err != nil {
+			log.Println(err)
+			http.Error(w, "Ошибка регистрации", http.StatusInternalServerError)
+			return
+		}
+
+		http.Redirect(w, r, "/", http.StatusSeeOther)
+		return
+	}
+
+	tmpl, err := template.ParseFiles("templates/register.html")
+	if err != nil {
+		log.Println(err)
+		http.Error(w, "Ошибка загрузки страницы", http.StatusInternalServerError)
+		return
+	}
+
+	tmpl.Execute(w, nil)
+}
+
 func main() {
 	var err error
 	database, err = connectDB()
@@ -111,6 +142,7 @@ func main() {
 	http.HandleFunc("/", homePage)
 	http.HandleFunc("/add-category", addCategoryPage)
 	http.HandleFunc("/add-book", addBookPage)
+	http.HandleFunc("/register", registerPage)
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	log.Println("Сервер запущен: http://localhost:8080")
