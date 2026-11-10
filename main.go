@@ -18,6 +18,17 @@ func homePage(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	db, err := connectDB()
+	if err != nil {
+		log.Fatal("Ошибка подключения к базе данных:", err)
+	}
+	defer db.Close()
+
+	err = createTables(db)
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	http.HandleFunc("/", homePage)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	log.Println("Сервер запущен: http://localhost:8080")
